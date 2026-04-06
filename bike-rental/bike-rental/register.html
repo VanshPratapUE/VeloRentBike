@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register — VeloRent</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono&display=swap" rel="stylesheet"/>
+</head>
+<body class="auth-page">
+
+  <div class="auth-bg">
+    <div class="auth-glow auth-glow-1"></div>
+    <div class="auth-glow auth-glow-2"></div>
+  </div>
+
+  <nav class="navbar scrolled">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">VELO<span>RENT</span></a>
+      <div class="nav-auth">
+        <a href="login.html" class="btn btn-ghost">Sign In</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="auth-container">
+    <div class="auth-card auth-card-wide">
+      <div class="auth-card-header">
+        <p class="section-label">JOIN VELORENT</p>
+        <h1 class="auth-title">Create Account</h1>
+        <p class="auth-sub">Already a member? <a href="login.html">Sign in →</a></p>
+      </div>
+
+      <div class="form-message" id="formMessage" style="display:none;"></div>
+
+      <form id="registerForm" class="auth-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="John Doe" required autocomplete="name"/>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="+91 98765 43210" autocomplete="tel"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" required autocomplete="email"/>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-icon-wrap">
+              <input type="password" id="password" placeholder="Min 6 characters" required autocomplete="new-password"/>
+              <button type="button" class="toggle-pw" id="togglePw" aria-label="Show">👁</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Repeat password" required autocomplete="new-password"/>
+          </div>
+        </div>
+
+        <!-- Password strength indicator -->
+        <div class="strength-wrap" id="strengthWrap" style="display:none;">
+          <div class="strength-bar" id="strengthBar"></div>
+          <span class="strength-label" id="strengthLabel"></span>
+        </div>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="agreeTerms" required/>
+          <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+        </label>
+
+        <button type="submit" class="btn btn-accent btn-full" id="registerBtn">
+          <span id="registerBtnText">Create Account</span>
+          <span id="registerSpinner" class="spinner" style="display:none;"></span>
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <script type="module" src="js/firebase.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script>
+    // Toggle password visibility
+    document.getElementById('togglePw').addEventListener('click', function() {
+      const pw = document.getElementById('password');
+      pw.type = pw.type === 'password' ? 'text' : 'password';
+      this.textContent = pw.type === 'password' ? '👁' : '🙈';
+    });
+
+    // Password strength meter
+    document.getElementById('password').addEventListener('input', function() {
+      const val = this.value;
+      const wrap = document.getElementById('strengthWrap');
+      const bar = document.getElementById('strengthBar');
+      const label = document.getElementById('strengthLabel');
+      if (!val) { wrap.style.display = 'none'; return; }
+      wrap.style.display = 'flex';
+      let strength = 0;
+      if (val.length >= 6) strength++;
+      if (val.length >= 10) strength++;
+      if (/[A-Z]/.test(val)) strength++;
+      if (/[0-9]/.test(val)) strength++;
+      if (/[^A-Za-z0-9]/.test(val)) strength++;
+      const levels = ['', 'Weak', 'Fair', 'Good', 'Strong', 'Very Strong'];
+      const colors = ['', '#ef4444', '#f97316', '#eab308', '#22c55e', '#10b981'];
+      bar.style.width = (strength * 20) + '%';
+      bar.style.background = colors[strength];
+      label.textContent = levels[strength];
+      label.style.color = colors[strength];
+    });
+  </script>
+</body>
+</html>
