@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VeloRent — Premium Bike Rentals</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════ NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">VELO<span>RENT</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="bikes.html">Bikes</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+      </ul>
+      <div class="nav-auth" id="navAuth">
+        <!-- Filled dynamically by auth.js -->
+        <a href="login.html" class="btn btn-ghost">Login</a>
+        <a href="register.html" class="btn btn-accent">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════ HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">🚴 Premium Urban Mobility</div>
+      <h1 class="hero-title">RIDE THE<br/><span class="accent-text">CITY</span><br/>YOUR WAY</h1>
+      <p class="hero-sub">Book premium bikes in seconds. No queues, no hassle — just freedom on two wheels.</p>
+      <div class="hero-cta">
+        <a href="bikes.html" class="btn btn-accent btn-lg">Browse Bikes</a>
+        <a href="register.html" class="btn btn-outline btn-lg">Join Free</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Bikes Available</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">12K+</span><span class="stat-label">Happy Riders</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Avg Rating</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="bike-illustration">
+        <svg viewBox="0 0 500 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Rear wheel -->
+          <circle cx="130" cy="240" r="90" stroke="#FF4D00" stroke-width="6" opacity="0.9"/>
+          <circle cx="130" cy="240" r="70" stroke="#FF4D00" stroke-width="2" opacity="0.3"/>
+          <circle cx="130" cy="240" r="16" fill="#FF4D00" opacity="0.8"/>
+          <!-- Spokes rear -->
+          <line x1="130" y1="150" x2="130" y2="330" stroke="#FF4D00" stroke-width="2" opacity="0.4"/>
+          <line x1="40" y1="240" x2="220" y2="240" stroke="#FF4D00" stroke-width="2" opacity="0.4"/>
+          <line x1="67" y1="177" x2="193" y2="303" stroke="#FF4D00" stroke-width="2" opacity="0.4"/>
+          <line x1="67" y1="303" x2="193" y2="177" stroke="#FF4D00" stroke-width="2" opacity="0.4"/>
+          <!-- Front wheel -->
+          <circle cx="370" cy="240" r="90" stroke="#FF4D00" stroke-width="6" opacity="0.9"/>
+          <circle cx="370" cy="240" r="70" stroke="#FF4D00" stroke-width="2" opacity="0.3"/>
+          <circle cx="370" cy="240" r="16" fill="#FF4D00" opacity="0.8"/>
+          <!-- Spokes front -->
+          <line x1="370" y1="150" x2="370" y2="330" stroke="#FF4D00" stroke-width="2" opacity="0.4"/>
+          <line x1="280" y1="240" x2="460" y2="240" stroke="#FF4D00" stroke-width="2" opacity="0.4"/>
+          <line x1="307" y1="177" x2="433" y2="303" stroke="#FF4D00" stroke-width="2" opacity="0.4"/>
+          <line x1="307" y1="303" x2="433" y2="177" stroke="#FF4D00" stroke-width="2" opacity="0.4"/>
+          <!-- Frame -->
+          <path d="M130 240 L250 120 L370 240" stroke="#FFFFFF" stroke-width="5" fill="none" opacity="0.9"/>
+          <path d="M250 120 L200 240" stroke="#FFFFFF" stroke-width="5" opacity="0.9"/>
+          <path d="M200 240 L130 240" stroke="#FFFFFF" stroke-width="5" opacity="0.9"/>
+          <path d="M250 120 L300 180 L370 240" stroke="#FFFFFF" stroke-width="5" fill="none" opacity="0.9"/>
+          <!-- Handlebar -->
+          <path d="M300 180 L330 140 L360 140" stroke="#FF4D00" stroke-width="5" fill="none" opacity="0.9"/>
+          <!-- Seat -->
+          <path d="M250 120 L230 108 L220 108" stroke="#FF4D00" stroke-width="5" fill="none" opacity="0.9"/>
+          <path d="M218 105 L240 105" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.9"/>
+          <!-- Pedal -->
+          <circle cx="200" cy="240" r="10" fill="#FF4D00" opacity="0.7"/>
+          <line x1="185" y1="240" x2="215" y2="240" stroke="#FF4D00" stroke-width="4" opacity="0.9"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FEATURES -->
+  <section class="features-strip">
+    <div class="feature-item">
+      <span class="feature-icon">⚡</span>
+      <span>Instant Booking</span>
+    </div>
+    <div class="feature-item">
+      <span class="feature-icon">🔒</span>
+      <span>Secure Payments</span>
+    </div>
+    <div class="feature-item">
+      <span class="feature-icon">🗺️</span>
+      <span>GPS Tracked</span>
+    </div>
+    <div class="feature-item">
+      <span class="feature-icon">🛠️</span>
+      <span>Maintained Daily</span>
+    </div>
+    <div class="feature-item">
+      <span class="feature-icon">📱</span>
+      <span>Mobile Ready</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FEATURED BIKES -->
+  <section class="section" id="featured">
+    <div class="section-header">
+      <p class="section-label">OUR FLEET</p>
+      <h2 class="section-title">Featured Bikes</h2>
+      <a href="bikes.html" class="btn btn-ghost">View All →</a>
+    </div>
+    <div class="bikes-grid" id="featuredBikes">
+      <!-- Filled dynamically by bikes.js -->
+      <div class="bike-skeleton"></div>
+      <div class="bike-skeleton"></div>
+      <div class="bike-skeleton"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ HOW IT WORKS -->
+  <section class="section how-section">
+    <div class="section-header">
+      <p class="section-label">PROCESS</p>
+      <h2 class="section-title">How It Works</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3>Create Account</h3>
+        <p>Sign up in under 60 seconds. No credit card required to browse.</p>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3>Pick Your Bike</h3>
+        <p>Browse our fleet, compare specs and prices, find your perfect ride.</p>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3>Book Instantly</h3>
+        <p>Select your dates, confirm your booking, and you're all set.</p>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <h3>Ride Free</h3>
+        <p>Pick up your bike, explore the city, return when done.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ CTA BANNER -->
+  <section class="cta-banner">
+    <div class="cta-inner">
+      <h2>Ready to Roll?</h2>
+      <p>Join thousands of riders exploring the city on VeloRent bikes.</p>
+      <a href="register.html" class="btn btn-accent btn-lg">Start Riding Today</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">VELO<span>RENT</span></a>
+        <p>Premium urban bike rentals for the modern rider.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="bikes.html">Browse Bikes</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <a href="#">FAQ</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 VeloRent. Built with Firebase.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase SDKs -->
+  <script type="module" src="js/firebase.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/bikes.js"></script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+    // Hamburger menu
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Load featured bikes when page loads
+    import('./js/bikes.js').then(module => {
+      module.loadFeaturedBikes();
+    }).catch(err => {
+      console.error('Failed to load bikes:', err);
+    });
+  </script>
+</body>
+</html>

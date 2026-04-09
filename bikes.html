@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Browse Bikes — VeloRent</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">VELO<span>RENT</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="bikes.html" class="active">Bikes</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+      </ul>
+      <div class="nav-auth" id="navAuth">
+        <a href="login.html" class="btn btn-ghost">Login</a>
+        <a href="register.html" class="btn btn-accent">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="section-label">OUR FLEET</p>
+      <h1 class="page-title">Available Bikes</h1>
+      <p class="page-sub">Choose from our premium selection of city and mountain bikes.</p>
+    </div>
+  </div>
+
+  <!-- Filters Bar -->
+  <section class="filters-bar">
+    <div class="filters-inner">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search bikes..." class="search-input"/>
+      </div>
+      <div class="filter-group">
+        <label>Category</label>
+        <select id="categoryFilter" class="filter-select">
+          <option value="all">All Types</option>
+          <option value="city">City</option>
+          <option value="mountain">Highway</option>
+          <option value="electric">Electric</option>
+          <option value="hybrid">CNG</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Sort By</label>
+        <select id="sortFilter" class="filter-select">
+          <option value="default">Default</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="name">Name A-Z</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Max Price/Day</label>
+        <select id="priceFilter" class="filter-select">
+          <option value="all">Any Price</option>
+          <option value="500">Under ₹500</option>
+          <option value="1000">Under ₹1000</option>
+          <option value="2000">Under ₹2000</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bikes Grid -->
+  <section class="bikes-section">
+    <div class="bikes-count" id="bikesCount">Loading bikes...</div>
+    <div class="bikes-grid-full" id="bikesGrid">
+      <!-- Skeletons while loading -->
+      <div class="bike-skeleton"></div>
+      <div class="bike-skeleton"></div>
+      <div class="bike-skeleton"></div>
+      <div class="bike-skeleton"></div>
+      <div class="bike-skeleton"></div>
+      <div class="bike-skeleton"></div>
+    </div>
+    <!-- No results -->
+    <div class="no-results" id="noResults" style="display:none;">
+      <p>🚲</p>
+      <h3>No bikes found</h3>
+      <p>Try adjusting your filters.</p>
+    </div>
+  </section>
+
+  <!-- ═══ BOOKING MODAL ═══ -->
+  <div class="modal-overlay" id="bookingModal" style="display:none;">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-bike-info" id="modalBikeInfo">
+        <!-- Filled by booking.js -->
+      </div>
+      <form id="bookingForm" class="booking-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate" required/>
+          </div>
+          <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="date" id="endDate" required/>
+          </div>
+        </div>
+        <div class="booking-summary" id="bookingSummary" style="display:none;">
+          <div class="summary-row">
+            <span>Duration</span>
+            <span id="summaryDays">— days</span>
+          </div>
+          <div class="summary-row">
+            <span>Price/day</span>
+            <span id="summaryPrice">₹—</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span id="summaryTotal">₹—</span>
+          </div>
+        </div>
+        <div class="form-message" id="bookingMessage" style="display:none;"></div>
+        <button type="submit" class="btn btn-accent btn-full" id="bookingBtn">
+          <span id="bookingBtnText">Confirm Booking</span>
+          <span id="bookingSpinner" class="spinner" style="display:none;"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>© 2025 VeloRent. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/firebase.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/bikes.js"></script>
+  <script type="module" src="js/booking.js"></script>
+  <script>
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+    // Set min date to today for date inputs
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('startDate').min = today;
+    document.getElementById('endDate').min = today;
+  </script>
+</body>
+</html>
